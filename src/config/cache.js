@@ -1,0 +1,22 @@
+export default {
+	// 路由菜单
+	PERMISSION_ROUTES: 'PERMISSION_ROUTES',
+	//菜单选中的name
+	ACTIVE_NAME: 'ACTIVE_NAME',
+	//菜单展开激活的name
+	OPEN_NAMES: 'OPEN_NAMES',
+	// 面包屑渲染数据源
+	BREAD_CRUMB_LIST:'BREAD_CRUMB_LIST',
+	// 右侧菜单展开/收缩
+	MNEU_OPEN_STATUS: 'MNEU_OPEN_STATUS',
+	// 路由访问历史记录
+	ROUTER_HISTORY: 'ROUTER_HISTORY',
+	//token
+	LOGIN_STATUS: 'LOGIN_STATUS_TOKEN',
+	//uid
+	UID:'UID',
+	//用户信息
+	USER_INFO: 'USER_INFO',
+	//错误日志
+	ERROR_LIST:'ERROR_LIST'
+}
