@@ -9,7 +9,7 @@ export default defineConfig({
 	base:'./',
 	server: {
 		proxy: { 
-			'/api': {
+			'/api': { 
 				target: 'http://127.0.0.1',
 				changeOrigin: true,
 				rewrite: (path) => path.replace(/^\/api/, '/api') // 如果后端的接口路径不包含 '/api'，可能需要调整这里的 rewrite
