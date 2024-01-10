@@ -26,6 +26,9 @@
 		open_names,
 	} = storeToRefs(usemenuModule)
 
+	/**
+	 * 
+	 */
 	const {
 		menu_open_status
 	} = storeToRefs(globalConfig)

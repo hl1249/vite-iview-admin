@@ -12,8 +12,8 @@ const {
 
 export const appModule = defineStore('app', {
 	state: () => ({
-		error_list: Cache.get(ERROR_LIST) || [] //错误日志
-	}),
+		error_list: Cache.get(ERROR_LIST) || [], //错误日志
+ 	}),
 	actions: {
 		addErrorLog(info) {
 			this.error_list.push(info)

@@ -40,10 +40,8 @@ const constantRoutes = [
 		component: Main,
 		meta: {
 			title: '文档',
-			href: 'https://lison16.github.io/iview-admin-doc/#/',
 			icon: 'ios-book'
 		},
-
 		redirect: '/doc/index',
 		children: [{
 			path: 'index',
@@ -51,12 +49,99 @@ const constantRoutes = [
 			component: () => import('@/views/doc/index.vue'),
 			name: 'doc',
 			meta: {
-				title: 'Icons',
+				title: '文档',
+				href: 'https://lison16.github.io/iview-admin-doc/#/',
 				icon: 'ios-book',
 				noCache: true
 			}
 
 		}]
+	},
+	{
+		path: '/icon',
+		name: 'icon',
+		component: Main,
+		redirect: '/icon/index',
+		meta: {
+			icon: 'md-glasses',
+			title:"图标"
+		},
+		children: [{
+			path: 'index',
+			name: 'icon',
+			component: () => import('@/views/icon/index.vue'),
+			meta: {
+				title: '图标',
+				icon: 'md-glasses',
+				noCache: true
+			}
+
+		}]
+	},
+	{
+		path: '/jsx',
+		name: 'jsx',
+		component: Main,
+		redirect: '/jsx/index',
+		meta: {
+			icon: 'md-code',
+			title:"jsx模版"
+		},
+		children: [{
+			path: 'index',
+			name: 'jsx',
+			component: () => import('@/views/jsx/index.vue'),
+			meta: {
+				title: 'jsx模版',
+				icon: 'md-code',
+				noCache: true
+			}
+
+		}]
+	},
+	{
+		path: '/permission',
+		name: 'permission',
+		component: Main,
+		redirect: '/permission/permission_page',
+		meta: {
+			icon: 'md-lock',
+			title:"权限"
+		},
+		children: [{
+			path: 'permission_page',
+			name: 'permission_page',
+			component: () => import('@/views/permission/index.vue'),
+			meta: {
+				title: '权限页面',
+				icon: 'md-code',
+				noCache: true
+			}
+
+		},
+		{
+			path: 'admin_page',
+			name: 'admin_page',
+			component: () => import('@/views/permission/admin.vue'),
+			meta: {
+				title: 'admin展示',
+				icon: 'md-code',
+				noCache: true
+			}
+
+		},
+		{
+			path: 'edit_page',
+			name: 'edit_page',
+			component: () => import('@/views/permission/edit.vue'),
+			meta: {
+				title: 'edit展示',
+				icon: 'md-code',
+				noCache: true
+			}
+
+		}
+	]
 	},
 	{
 		path: '/multilevel',

@@ -72,7 +72,6 @@
 		slider: [20, 50],
 		textarea: '',
 	})
-
 	const theme = ref('light')
 	
 	

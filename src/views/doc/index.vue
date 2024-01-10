@@ -1,9 +1,10 @@
 <template>
-	<div>我是doc文档</div>
+	<Card>
+		<div style="height: 5000px;background-color: white;">我是doc文档</div>
+	</Card>
 </template>
 
-<script>
-</script>
+
 
 <style>
 </style>

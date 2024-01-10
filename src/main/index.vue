@@ -42,10 +42,22 @@ const router = useRouter()
 import maxLogo from '@/assets/images/logo.jpg'
 import minLogo from '@/assets/images/logo-min.jpg'
 
+/**
+ * @Function: 
+ * @param {Object} route 需要跳转的路由地址
+ */
 const turnToPage = (route) => {
+	if(route.meta.href)  window.open(route.meta.href)
+	else
 	router.push({
 		name: route.name
 	})
+	
+	
+}
+
+const giao = (name) => {
+
 }
 
 // 全局提供

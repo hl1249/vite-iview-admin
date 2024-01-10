@@ -1,4 +1,3 @@
-
 /**
  * @param {Array} routers 路由列表数组
  * @description 用于找到路由列表中name为home的对象
@@ -19,10 +18,11 @@ export const getHomeRoute = (routers, homeName = 'home_page') => {
   return homeRoute
 }
 
-
 /**
- * @param {Array} routeMetched 当前路由metched
- * @returns {Array}
+ * @description: 
+ * @param {object} route 当前渲染路由
+ * @param {Array} homeRoute 首页路由对象
+ * @return {Array} 面包屑导航
  */
 export const getBreadCrumbList = (route, homeRoute) => {
   let homeItem = { ...homeRoute, icon: homeRoute.meta.icon }

@@ -37,6 +37,8 @@
 	
 	import useStore from '@/store'
 	const {userModule,menuModule} = useStore()
+
+	import appConfig from '@/config/app'
 	
 	import Cache from '@/util/cache'
 	import {
@@ -77,7 +79,7 @@
 					
 					if(res.status == 200){
 						router.push({
-							name: menuModule.active_name || 'home'
+							name: menuModule.active_name || appConfig.HOME_NAME
 						})
 					}
 					

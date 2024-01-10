@@ -1,5 +1,5 @@
 <template>
-	<Dropdown placement="right-start" class="collapsed-itm">
+	<Dropdown placement="right-start" class="collapsed-item">
 		<a href="javascript:void(0)" :class="{'drop-menu-a':!hiddenTitle}">
 			<Icon :type="parentItem.meta.icon" :size="iconSize" class="icon" :color="hiddenTitle?'white':''"></Icon>
 			<span v-if="!hiddenTitle">{{parentItem.meta.title}}</span>

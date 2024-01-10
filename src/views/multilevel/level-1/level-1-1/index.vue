@@ -1,9 +1,9 @@
 <template>
-	<div style="padding: 30px;">
+	<Card>
 		<Alert type="success">
 			level-1-1
 		</Alert>
-	</div>
+	</Card>
 </template>
 
 <script>
