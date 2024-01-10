@@ -1,12 +1,13 @@
 import {
 	createRouter,
-	createWebHistory
+	createWebHistory,
+	createWebHashHistory
 } from 'vue-router'
 
 import constantRoutes from './routers'
 
 const asyncRoutes = createRouter({
-	history: createWebHistory(),
+	history: createWebHashHistory(),
 	routes: constantRoutes,
 })
 
