@@ -15,7 +15,7 @@
 			<Col>
 				<Dropdown>
 					<div class="header-bar-row-avatar">
-						<Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
+						<Avatar src="https://s2.loli.net/2024/01/10/lnRQMDc8UAzdaeY.jpg" />
 						<Icon type="md-arrow-dropdown" class="icon" size="20" />
 					</div>
 					<template #list>
