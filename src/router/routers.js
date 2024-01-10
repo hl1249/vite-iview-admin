@@ -50,7 +50,7 @@ const constantRoutes = [
 			name: 'doc',
 			meta: {
 				title: '文档',
-				href: 'https://lison16.github.io/iview-admin-doc/#/',
+				href: 'https://www.iviewui.com/view-ui-plus/guide/introduce',
 				icon: 'ios-book',
 				noCache: true
 			}
