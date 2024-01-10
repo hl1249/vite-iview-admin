@@ -1,1 +1,0 @@
-import{_ as a,c as e,o as n,i as r,w as t,f as s,h as _}from"./index-n8os7qUy.js";const l={};function d(f,i){const o=e("Title"),c=e("Card");return n(),r(c,null,{default:t(()=>[s(o,{level:"4"},{default:t(()=>[_('["edit"]权限组才能访问该页面')]),_:1})]),_:1})}const m=a(l,[["render",d]]);export{m as default};
