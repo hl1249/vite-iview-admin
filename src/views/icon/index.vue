@@ -3,7 +3,7 @@
         <template #title>
             <Icon type="md-glasses" size="16"></Icon>
             <span style="margin:0 20px;">左键复制标签 右键复制命名</span>
-            <Input v-model="value" placeholder="粘贴复制内容试试..." clearable  style="width: 300px" />
+            <Input placeholder="粘贴复制内容试试..." clearable  style="width: 300px" />
         </template>
         <div class="icon-main">
             <div @click="$Copy({text:`<Icon type=${item} />`})" @contextmenu.prevent="$Copy({text:`${item}`})" class="icon-main-item" v-for="item in icons" :key="item" style="text-align:center;margin-bottom: 20px;">

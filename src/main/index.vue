@@ -18,7 +18,11 @@
 					<Layout class="main-layout-con">
 						<tags-nav></tags-nav>
 						<Content class="content-wrapper">
-							<router-view />
+							<router-view v-slot="{ Component, route }">
+								<transition name="custom" mode="out-in">
+									<component :is="Component" :key="route.path" v-if="!route.meta.keepAlive" />
+								</transition>
+							</router-view>
 						</Content>
 					</Layout>
 				</Content>
@@ -47,17 +51,13 @@ import minLogo from '@/assets/images/logo-min.jpg'
  * @param {Object} route 需要跳转的路由地址
  */
 const turnToPage = (route) => {
-	if(route.meta.href)  window.open(route.meta.href)
-	else
-	router.push({
-		name: route.name
-	})
-	
-	
-}
-
-const giao = (name) => {
-
+	if (route.meta.href ) {
+		window.open(route.meta.href)
+	} else {
+		router.push({
+			name: route.name
+		})
+	}
 }
 
 // 全局提供

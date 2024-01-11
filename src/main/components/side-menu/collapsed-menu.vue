@@ -1,14 +1,16 @@
 <template>
-	<div v-for="route in permissionRoutes" :key="route" class="collapsed-menu">
-		<Row justify="center" v-if="route.children && route.children.length > 1" >
-			<collapsed-item @customClick="handleClick" :permissionRoutes="route.children" :parentItem="route" :hiddenTitle="true" :iconSize="30"></collapsed-item>
-		</Row>
-		<Row justify="center" v-else>
+	<div  class="collapsed-menu">
+	<div v-for="route in permissionRoutes" :key="route" class="collapsed-menu-item">
+		<div  v-if="route.children && route.children.length > 1" >
+			<collapsed-item  :permissionRoutes="route.children" :parentItem="route" :hiddenTitle="true" :iconSize="30"></collapsed-item>
+		</div>
+		<div  v-else>
 			<Tooltip :content="route.meta.title" placement="right-start">
-				<Icon @click="handleClick(route)" :type="route.meta.icon" size="30" class="menu-icon" color="white"/>
+				<Icon @click="handleClick(route.children[0])" :type="route.meta.icon" size="30" class="menu-icon" color="white"/>
 			</Tooltip>
-		</Row>
+		</div>
 	</div>
+</div>
 </template>
 
 <script setup>

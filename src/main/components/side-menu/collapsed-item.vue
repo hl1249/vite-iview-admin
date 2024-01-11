@@ -43,6 +43,7 @@
 		}
 	})
 	
+	
 	const handleClick = (route) => {
 		turnToPage(route)
 	}
