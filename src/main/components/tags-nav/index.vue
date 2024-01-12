@@ -38,16 +38,11 @@ const removeHistoryRoute = (name) => {
 }
 
 const handleClick = (route) => {
-	console.log('route', route)
 	turnToPage(route)
 }
 
 const scrollOuter = ref(0)
 const scrollBody = ref(0)
-
-onMounted(()=>{
-	console.log('scrollBodys',)
-})
 
 const off_set = ref(0)
 
