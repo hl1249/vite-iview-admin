@@ -1,0 +1,131 @@
+.layout {
+  height: 100vh;
+}
+.layout .tags-nav {
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #f0f0f0;
+  width: 100%;
+  position: relative;
+  height: 40px;
+}
+.layout .tags-nav .ivu-tag:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.layout .tags-nav .ivu-tag-dot,
+.layout .tags-nav .ivu-tag-dot-inner {
+  transition: all 0.5s;
+}
+.layout .tags-nav .btn-con {
+  height: 100%;
+  padding-top: 3px;
+}
+.layout .tags-nav .btn-con button {
+  padding: 6px 4px;
+  line-height: 14px;
+  text-align: center;
+}
+.layout .tags-nav .right-btn,
+.layout .tags-nav .left-btn {
+  position: absolute;
+  background-color: white;
+  border-right: 1px solid #f0f0f0;
+}
+.layout .tags-nav .right-btn {
+  right: 0;
+}
+.layout .tags-nav .scroll-outer {
+  position: absolute;
+  left: 28px;
+  top: 0;
+  background-color: red;
+  box-shadow: inset 0 0 3px 2px hsla(0, 0%, 39.2%, 0.1);
+}
+.layout .tags-nav .scroll-outer .scroll-body {
+  background-color: green;
+  position: absolute;
+  padding: 1px 4px 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+}
+.layout .tags-nav .scroll-outer .scroll-body div {
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+}
+.layout > .ivu-layout {
+  height: 100%;
+}
+.layout .header-bar {
+  background-color: white;
+  padding: 0 20px;
+}
+.layout .header-bar .collapsed-icon:hover {
+  color: #2D8CF0;
+  cursor: pointer;
+}
+.layout .header-bar-row {
+  padding-right: 20px;
+}
+.layout .header-bar-row-avatar:hover {
+  cursor: pointer;
+}
+.layout .header-bar-row .icon {
+  vertical-align: middle;
+}
+.layout .layout-header-bar {
+  padding: 0;
+}
+.layout .main-content-con {
+  flex: 1;
+  display: flex;
+}
+.layout .main-content-con .main-layout-con .content-wrapper {
+  overflow: auto;
+  height: 0;
+  padding: 20px;
+}
+.layout .logo-con {
+  height: 64px;
+  padding: 10px;
+  overflow: hidden;
+}
+.layout .logo-con img {
+  height: 44px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.layout .collapsed-menu {
+  display: grid;
+  justify-content: center;
+}
+.layout .collapsed-menu-item {
+  height: 49px;
+  display: flex;
+  align-items: center;
+}
+.layout .collapsed-menu .collapsed-item .drop-menu-a {
+  display: flex;
+  align-items: center;
+  padding: 8px 0 8px 16px;
+  box-sizing: border-box;
+}
+.layout .collapsed-menu .collapsed-item .drop-menu-a .icon {
+  margin-right: 3px;
+}
+.layout .collapsed-menu .menu-icon:hover {
+  cursor: pointer;
+}
+.layout .collapsed-menu-row {
+  background-color: red;
+}
+.layout .custom-enter-active {
+  transform: translateX(-10px);
+  opacity: 0;
+}
+.layout .custom-leave-active {
+  transform: translateX(10px);
+  opacity: 0;
+}
