@@ -31,6 +31,7 @@
   position: absolute;
   background-color: white;
   border-right: 1px solid #f0f0f0;
+  z-index: 9999;
 }
 .layout .tags-nav .right-btn {
   right: 0;
@@ -39,16 +40,19 @@
   position: absolute;
   left: 28px;
   top: 0;
-  background-color: red;
+  bottom: 0;
+  right: 28px;
   box-shadow: inset 0 0 3px 2px hsla(0, 0%, 39.2%, 0.1);
+  overflow: hidden;
 }
 .layout .tags-nav .scroll-outer .scroll-body {
-  background-color: #dfdfdf;
+  transition: all 0.2s;
   position: absolute;
+  align-items: center;
   padding: 1px 4px 0;
   left: 0;
-  display: flex;
-  align-items: center;
+  white-space: nowrap;
+  overflow: visible;
 }
 .layout .tags-nav .scroll-outer .scroll-body div {
   display: inline-block;
@@ -106,11 +110,16 @@
   display: flex;
   align-items: center;
 }
+.layout .collapsed-menu .collapsed-item .ivu-dropdown-item {
+  white-space: nowrap;
+}
+.layout .collapsed-menu .collapsed-item .ivu-dropdown-menu {
+  min-width: 120px;
+}
 .layout .collapsed-menu .collapsed-item .drop-menu-a {
   display: flex;
   align-items: center;
   padding: 8px 0 8px 16px;
-  box-sizing: border-box;
 }
 .layout .collapsed-menu .collapsed-item .drop-menu-a .icon {
   margin-right: 3px;

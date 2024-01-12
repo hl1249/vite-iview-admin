@@ -11,6 +11,10 @@
 					<collapsed-item  v-if="route.children && route.children.length > 1"
 						:permissionRoutes="route.children" :hiddenTitle="false" :parentItem="route" :iconSize="16">
 					</collapsed-item>
+					<DropdownItem @click="handleClick(route.children[0])" v-else-if="route.children">
+						<Icon :type="route.meta.icon" style="margin-right: 3px;" size="16"></Icon>
+						<span>{{route.children[0].meta.title}}</span>
+					</DropdownItem>
 					<DropdownItem @click="handleClick(route)" v-else>
 						<Icon :type="route.meta.icon" style="margin-right: 3px;" size="16"></Icon>
 						<span>{{route.meta.title}}</span>
