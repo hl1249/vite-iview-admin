@@ -2,11 +2,13 @@
 	<div class="layout">
 		<Layout>
 			<Sider ref="side1" hide-trigger collapsible :width="menu_open_status ? 240 : 70">
-				<div class="logo-con">
-					<img v-if="menu_open_status" :src="maxLogo">
-					<img v-if="!menu_open_status" :src="minLogo">
+				<div class="side-content">
+					<div class="logo-con">
+						<img v-if="menu_open_status" :src="maxLogo">
+						<img v-if="!menu_open_status" :src="minLogo">
+					</div>
+					<Sidebar class="side-bar"></Sidebar>
 				</div>
-				<Sidebar></Sidebar>
 			</Sider>
 			<Layout>
 				<Header class="layout-header-bar">
@@ -51,7 +53,7 @@ import minLogo from '@/assets/images/logo-min.jpg'
  * @param {Object} route 需要跳转的路由地址
  */
 const turnToPage = (route) => {
-	if (route.meta.href ) {
+	if (route.meta.href) {
 		window.open(route.meta.href)
 	} else {
 		router.push({

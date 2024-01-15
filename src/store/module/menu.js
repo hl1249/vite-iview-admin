@@ -97,6 +97,28 @@ export const menuModule = defineStore('menu', {
 			}
 
 
+		},
+		removeAllHistoryRoute(type){
+			const homeItem = getHomeRoute(constantRoutes)
+			if(type == 'all'){
+				this.router_history.splice(1,this.router_history.length)
+				asyncRoutes.push({
+					name: homeItem.name
+				})
+				Cache.set(ROUTER_HISTORY,this.router_history)
+				
+			}else{
+				const new_router_history = this.router_history.filter((item)=>{
+					return item.name == this.active_name || item.name == homeItem.name
+				})
+				asyncRoutes.push({
+					name: this.active_name
+				})
+
+				this.router_history = new_router_history
+				
+				Cache.set(ROUTER_HISTORY,this.router_history)
+			}
 		}
 	},
 	getters: {

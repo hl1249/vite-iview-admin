@@ -216,6 +216,105 @@ const constantRoutes = [
 					title: '菜单2'
 				},
 				component: () => import('@/views/multilevel/level-2/index.vue'),
+			},
+			{
+				path: 'level3',
+				name: 'level3',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单3'
+				},
+				component: () => import('@/views/multilevel/level-2/index.vue'),
+			},
+			{
+				path: 'level4',
+				name: 'level4',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单4'
+				},
+				component: () => import('@/views/multilevel/level-2/index.vue'),
+			},
+			{
+				path: 'level5',
+				name: 'level5',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单5'
+				},
+				component: () => import('@/views/multilevel/level-2/index.vue'),
+			},
+			{
+				path: 'level6',
+				name: 'level6',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单6'
+				},
+				component: () => import('@/views/multilevel/level-2/index.vue'),
+			},
+			{
+				path: 'level7',
+				name: 'level7',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单7'
+				},
+				component: () => import('@/views/multilevel/level-2/index.vue'),
+			},
+			{
+				path: 'level8',
+				name: 'level8',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单8'
+				},
+				component: () => import('@/views/multilevel/level-2/index.vue'),
+			},
+			{
+				path: 'level9',
+				name: 'level9',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单9'
+				},
+				component: () => import('@/views/multilevel/level-2/index.vue'),
+			},
+			{
+				path: 'level10',
+				name: 'level10',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单10'
+				},
+				component: () => import('@/views/multilevel/level-2/index.vue'),
+			},
+			{
+				path: 'level11',
+				name: 'level11',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单11'
+				},
+				component: () => import('@/views/multilevel/level-2/index.vue'),
+			},
+			{
+				path: 'level12',
+				name: 'level12',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单12'
+				},
+				component: () => import('@/views/multilevel/level-2/index.vue'),
+			},
+			{
+				path: 'level13',
+				name: 'level13',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单13'
+				},
+				component: () => import('@/views/multilevel/level-2/index.vue'),
 			}
 		]
 	}
