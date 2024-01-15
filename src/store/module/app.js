@@ -18,6 +18,7 @@ export const appModule = defineStore('app', {
 		addErrorLog(info) {
 			this.error_list.push(info)
 			Cache.set(ERROR_LIST,this.error_list)
+			console.log('error_list',this.error_list)
 		},
 	},
 });

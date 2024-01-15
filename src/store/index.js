@@ -8,7 +8,7 @@ export default function useStore() {
   return {
     appModule: appModule(),
     menuModule: menuModule(),
-	globalConfig:globalConfig(),
-	userModule:userModule()
+    globalConfig: globalConfig(),
+    userModule: userModule()
   }
 }

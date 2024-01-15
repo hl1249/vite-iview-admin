@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 import useStore from '@/store'
-const {appModule} = useStore()
-
+const {appModule,userModule} = useStore()
 import app from '@/config/app'
 const {
-	HEADER
+	HEADER,
+	TOKENNAME
 } = app
 
 // import { Spin } from 'iview'
@@ -37,7 +37,8 @@ class HttpRequest {
 		const config = {
 			baseURL: this.baseUrl,
 			headers: {
-				...HEADER
+				...HEADER,
+				[TOKENNAME]:userModule.GET_TOKEN()
 			}
 		}
 		return config
