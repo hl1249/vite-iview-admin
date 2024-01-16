@@ -53,7 +53,6 @@ import minLogo from '@/assets/images/logo-min.jpg'
  * @param {Object} route 需要跳转的路由地址
  */
 const turnToPage = (route) => {
-	console.log("route",route)
 	if (route.meta.href) {
 		window.open(route.meta.href)
 	} else {

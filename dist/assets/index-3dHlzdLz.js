@@ -1,0 +1,1 @@
+import{_ as a,b as e,o as c,i as r,w as t,e as s,g as _}from"./index-gVg0D9WM.js";const l={};function d(f,p){const o=e("Alert"),n=e("Card");return c(),r(n,null,{default:t(()=>[s(o,null,{default:t(()=>[_(" level-2 ")]),_:1})]),_:1})}const i=a(l,[["render",d]]);export{i as default};

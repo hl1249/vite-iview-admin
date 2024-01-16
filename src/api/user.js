@@ -1,7 +1,6 @@
 import axios from '@/util/axios'
 
 export const login = ({ userName, password }) => {
-	console.log("我调用")
   const data = {
     userName,
     password

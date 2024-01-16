@@ -112,6 +112,9 @@
   background-color: white;
   padding: 0 20px;
 }
+.layout .header-bar .full-screen-btn-con:hover {
+  cursor: pointer;
+}
 .layout .header-bar .collapsed-icon:hover {
   color: #2D8CF0;
   cursor: pointer;
@@ -132,7 +135,11 @@
   flex: 1;
   display: flex;
 }
+.layout .main-content-con .main-layout-con {
+  width: 100%;
+}
 .layout .main-content-con .main-layout-con .content-wrapper {
+  width: 100%;
   overflow: auto;
   height: 0;
   padding: 20px;

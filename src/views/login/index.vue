@@ -42,11 +42,8 @@
 	
 	import Cache from '@/util/cache'
 	import {
-		login,
-		saveError
+		login
 	} from '@/api/user.js'
-	
-	// saveError()
 
 
 	const rules = ref({

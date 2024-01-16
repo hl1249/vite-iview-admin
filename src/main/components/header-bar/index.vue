@@ -4,15 +4,23 @@
 			<Row align="top" justify="center">
 				<Col>
 				<Icon @click="collapsedSider"
-					:style="{transform:`rotate(${menu_open_status?180:90}deg)` , transition:'all .2s'}" type="md-menu"
-					size="28" class="collapsed-icon"></Icon>
+					:style="{ transform: `rotate(${menu_open_status ? 180 : 90}deg)`, transition: 'all .2s' }"
+					type="md-menu" size="28" class="collapsed-icon"></Icon>
 				</Col>
 				<Col>
-					<header-breadcrumb style="margin-left: 30px;"></header-breadcrumb>
+				<header-breadcrumb style="margin-left: 30px;"></header-breadcrumb>
 				</Col>
 			</Row>
-			
+
 			<Col>
+			<Row :gutter="16">
+				<Col>
+				<header-full-screen></header-full-screen>
+				</Col>
+				<Col>
+				<header-error></header-error>
+				</Col>
+				<Col>
 				<Dropdown>
 					<div class="header-bar-row-avatar">
 						<Avatar src="https://s2.loli.net/2024/01/10/lnRQMDc8UAzdaeY.jpg" />
@@ -24,6 +32,9 @@
 						</DropdownMenu>
 					</template>
 				</Dropdown>
+				</Col>
+			</Row>
+
 			</Col>
 		</Row>
 	</div>
@@ -31,34 +42,38 @@
 
 
 <script setup>
-	import {
-		computed,
-		defineComponent,
-		ref
-	} from 'vue'
+import {
+	computed,
+	defineComponent,
+	ref
+} from 'vue'
 
-	import headerBreadcrumb from './header-breadcrumb.vue'
+import headerBreadcrumb from './header-breadcrumb.vue'
+import headerFullScreen from './header-full-screen.vue'
+import headerError from './header-error.vue'
 
-	import useStore from '@/store'
-	const {
-		globalConfig,
-		userModule
-	} = useStore()
+import useStore from '@/store'
+const {
+	globalConfig,
+	userModule
+} = useStore()
 
-	import {
-		storeToRefs
-	} from 'pinia'
+import {
+	storeToRefs
+} from 'pinia'
 
-	const {
-		menu_open_status
-	} = storeToRefs(globalConfig)
+const {
+	menu_open_status
+} = storeToRefs(globalConfig)
 
-	const collapsedSider = () => {
-		globalConfig.changeMneuOpen()
-	}
+const collapsedSider = () => {
+	globalConfig.changeMneuOpen()
+}
 
-	const loginOut = () => {
-		// console.log('')
-		userModule.LOGIN_OUT()
-	}
+const loginOut = () => {
+	// console.log('')
+	userModule.LOGIN_OUT()
+}
+
+const isFullscreen = ref(false)
 </script>

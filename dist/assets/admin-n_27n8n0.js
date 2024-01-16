@@ -1,0 +1,1 @@
+import{_ as n,b as e,o as c,i as r,w as t,e as s,g as _}from"./index-gVg0D9WM.js";const l={};function d(i,f){const o=e("Title"),a=e("Card");return c(),r(a,null,{default:t(()=>[s(o,{level:4},{default:t(()=>[_('["admin"]权限组才能访问该页面')]),_:1})]),_:1})}const p=n(l,[["render",d]]);export{p as default};

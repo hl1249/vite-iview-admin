@@ -12,11 +12,11 @@
         <Alert v-if="$checkPermission(['edit', 'admin'])" type="success">$checkPermission(['edit','admin'])</Alert>
 
         <Title :level="4">指令方法</Title>
-        <div v-permission="['edit']">
-            <Alert> v-permission="['edit']"</Alert>
-        </div>
         <div v-permission="['admin']">
-            <Alert type="warning">v-permission="['admin']"</Alert>
+            <Alert> v-permission="['admin']"</Alert>
+        </div>
+        <div v-permission="['edit']">
+            <Alert type="warning">v-permission="['edit']"</Alert>
         </div>
         <div v-permission="['edit', 'admin']">
             <Alert type="success">v-permission="['edit','admin']"</Alert>

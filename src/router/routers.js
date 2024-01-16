@@ -342,6 +342,28 @@ const constantRoutes = [
 		},
 		component: () => import('@/views/error-page/500/index.vue')
 	},
+	{
+		path: '/error_logger',
+		name: 'error_logger',
+		component: Main,
+		meta: {
+			title: '错误日志',
+			icon: 'ios-book',
+			hideInMenu:true
+		},
+		redirect: '/error_logger/error_logger_page',
+		children: [{
+			path: '/error_logger/error_logger_page',
+			name: 'error_logger_page',
+			component: () => import('@/views/error-page/error-logger/index.vue'),
+			meta: {
+				title: '错误日志',
+				icon: 'ios-book',
+				noCache: true
+			}
+
+		}]
+	},
 ]
 
 export default constantRoutes
