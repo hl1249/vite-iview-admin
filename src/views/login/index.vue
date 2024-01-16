@@ -76,8 +76,10 @@
 					// res.data.expires_time = Math.round(new Date() / 1000) + 60
 					userModule.LOGIN({
 						token:res.data.token,
-						time:res.data.expires_time - Cache.time()
+						time:res.data.expires_time - Cache.time(),
 					})
+
+					userModule.UPDATE_USERINFO(res.data)
 					
 					if(res.status == 200){
 						router.push({

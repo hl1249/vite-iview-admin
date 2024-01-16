@@ -20,6 +20,8 @@
 	
 	const usemenuModule = menuModule
 	
+	usemenuModule.getPermissionRoutes()
+
 	const {
 		permission_routes,
 		active_name,

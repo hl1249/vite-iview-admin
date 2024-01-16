@@ -20,5 +20,13 @@ import {ref,nextTick,watch } from 'vue';
 		await nextTick()
 		menu.value.updateOpened()
 	})
+
+	
+	// 路由结构有变
+	watch(()=>props.permissionRoutes,async()=>{
+		await nextTick()
+		menu.value.updateOpened()
+		menu.value.updateActiveName()
+	})
 	
 </script>

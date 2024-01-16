@@ -59,3 +59,23 @@ export const getOpenNames = (route) => {
 	})
   return OpenNames
 }
+
+/**
+ * @description: 对比b素组的所有元素是否在a数组
+ * @param {*} arrayA 
+ * @param {*} arrayB
+ * @return {*}
+ */
+export const isArrayContainsArray = (arrayA,arrayB) => {
+  return arrayB.every(elementB => arrayA.includes(elementB));
+}
+
+/**
+ * @description: 权限组对比 用户的身份是否包含在路由的权限中
+ * @param {*} userRolse
+ * @param {*} routerRolse
+ * @return {*}
+ */
+export const permissionContrast = (userRolse,routerRolse) => {
+  return !( userRolse.every( item => routerRolse.includes(item)) )
+}

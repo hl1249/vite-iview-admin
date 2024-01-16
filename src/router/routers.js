@@ -2,7 +2,7 @@ import Main from '@/main/index.vue'
 import parentView from '@/components/parent-view/index.vue'
 // 固定全局路由
 const constantRoutes = [
-	// 默认配置路由地址 404 401 等页面
+	
 	{
 		path: '/login',
 		name: 'login',
@@ -19,8 +19,8 @@ const constantRoutes = [
 		component: Main,
 		meta: {
 			icon: 'md-home',
-			title:"首页",
 			hideInMenu: true,
+			title: "首页",
 		},
 		children: [{
 			path: '/home',
@@ -29,8 +29,8 @@ const constantRoutes = [
 			meta: {
 				title: '首页',
 				icon: 'md-home',
-				affix: true,
-				hideInMenu: false
+				giao:"王德发",
+				hideInMenu: true
 			}
 		}]
 	},
@@ -64,7 +64,7 @@ const constantRoutes = [
 		redirect: '/icon/index',
 		meta: {
 			icon: 'md-glasses',
-			title:"图标"
+			title: "图标"
 		},
 		children: [{
 			path: 'index',
@@ -85,7 +85,7 @@ const constantRoutes = [
 		redirect: '/jsx/index',
 		meta: {
 			icon: 'md-code',
-			title:"jsx模版"
+			title: "jsx模版"
 		},
 		children: [{
 			path: 'index',
@@ -106,7 +106,7 @@ const constantRoutes = [
 		redirect: '/permission/permission_page',
 		meta: {
 			icon: 'md-lock',
-			title:"权限"
+			title: "权限"
 		},
 		children: [{
 			path: 'permission_page',
@@ -115,7 +115,7 @@ const constantRoutes = [
 			meta: {
 				title: '权限页面',
 				icon: 'md-code',
-				noCache: true
+				noCache: true,
 			}
 
 		},
@@ -126,7 +126,8 @@ const constantRoutes = [
 			meta: {
 				title: 'admin展示',
 				icon: 'md-code',
-				noCache: true
+				noCache: true,
+				roles:['admin']
 			}
 
 		},
@@ -137,11 +138,12 @@ const constantRoutes = [
 			meta: {
 				title: 'edit展示',
 				icon: 'md-code',
-				noCache: true
+				noCache: true,
+				roles:['admin','edit']
 			}
 
 		}
-	]
+		]
 	},
 	{
 		path: '/multilevel',
@@ -152,172 +154,194 @@ const constantRoutes = [
 			title: '路由嵌套'
 		},
 		children: [{
-				path: 'level1',
-				name: 'level1',
+			path: 'level1',
+			name: 'level1',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单1'
+			},
+			component: parentView,
+			children: [{
+				path: 'level1-1',
+				name: 'level1-1',
 				meta: {
 					icon: 'md-funnel',
-					title: '菜单1'
+					title: '菜单1-1'
+				},
+				component: () => import('@/views/multilevel/level-1/level-1-1/index.vue'),
+			},
+			{
+				path: 'level1-2',
+				name: 'level1-2',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单1-2'
+				},
+				component: () => import('@/views/multilevel/level-1/level-1-2/index.vue'),
+			},
+			{
+				path: 'level1-3',
+				name: 'level1-3',
+				meta: {
+					icon: 'md-funnel',
+					title: '菜单1-3'
 				},
 				component: parentView,
-				children: [{
-						path: 'level1-1',
-						name: 'level1-1',
+				children: [
+					{
+						path: 'level1-3-1',
+						name: 'level1-3-1',
 						meta: {
 							icon: 'md-funnel',
-							title: '菜单1-1'
+							title: '菜单1-3-1'
 						},
-						component: () => import('@/views/multilevel/level-1/level-1-1/index.vue'),
+						component: () => import('@/views/multilevel/level-1/level-1-3/level-1-3-1/index.vue'),
 					},
 					{
-						path: 'level1-2',
-						name: 'level1-2',
+						path: 'level1-3-2',
+						name: 'level1-3-2',
 						meta: {
 							icon: 'md-funnel',
-							title: '菜单1-2'
+							title: '菜单1-3-2'
 						},
-						component: () => import('@/views/multilevel/level-1/level-1-2/index.vue'),
-					},
-					{
-						path: 'level1-3',
-						name: 'level1-3',
-						meta: {
-							icon: 'md-funnel',
-							title: '菜单1-3'
-						},
-						component: parentView,
-						children: [
-							{
-								path: 'level1-3-1',
-								name: 'level1-3-1',
-								meta: {
-									icon: 'md-funnel',
-									title: '菜单1-3-1'
-								},
-								component: () => import('@/views/multilevel/level-1/level-1-3/level-1-3-1/index.vue'),
-							},
-							{
-								path: 'level1-3-2',
-								name: 'level1-3-2',
-								meta: {
-									icon: 'md-funnel',
-									title: '菜单1-3-2'
-								},
-								component: () => import('@/views/multilevel/level-1/level-1-3/level-1-3-2/index.vue'),
-							},
-						]
+						component: () => import('@/views/multilevel/level-1/level-1-3/level-1-3-2/index.vue'),
 					},
 				]
 			},
-			{
-				path: 'level2',
-				name: 'level2',
-				meta: {
-					icon: 'md-funnel',
-					title: '菜单2'
-				},
-				component: () => import('@/views/multilevel/level-2/index.vue'),
+			]
+		},
+		{
+			path: 'level2',
+			name: 'level2',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单2'
 			},
-			{
-				path: 'level3',
-				name: 'level3',
-				meta: {
-					icon: 'md-funnel',
-					title: '菜单3'
-				},
-				component: () => import('@/views/multilevel/level-2/index.vue'),
+			component: () => import('@/views/multilevel/level-2/index.vue'),
+		},
+		{
+			path: 'level3',
+			name: 'level3',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单3'
 			},
-			{
-				path: 'level4',
-				name: 'level4',
-				meta: {
-					icon: 'md-funnel',
-					title: '菜单4'
-				},
-				component: () => import('@/views/multilevel/level-2/index.vue'),
+			component: () => import('@/views/multilevel/level-2/index.vue'),
+		},
+		{
+			path: 'level4',
+			name: 'level4',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单4'
 			},
-			{
-				path: 'level5',
-				name: 'level5',
-				meta: {
-					icon: 'md-funnel',
-					title: '菜单5'
-				},
-				component: () => import('@/views/multilevel/level-2/index.vue'),
+			component: () => import('@/views/multilevel/level-2/index.vue'),
+		},
+		{
+			path: 'level5',
+			name: 'level5',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单5'
 			},
-			{
-				path: 'level6',
-				name: 'level6',
-				meta: {
-					icon: 'md-funnel',
-					title: '菜单6'
-				},
-				component: () => import('@/views/multilevel/level-2/index.vue'),
+			component: () => import('@/views/multilevel/level-2/index.vue'),
+		},
+		{
+			path: 'level6',
+			name: 'level6',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单6'
 			},
-			{
-				path: 'level7',
-				name: 'level7',
-				meta: {
-					icon: 'md-funnel',
-					title: '菜单7'
-				},
-				component: () => import('@/views/multilevel/level-2/index.vue'),
+			component: () => import('@/views/multilevel/level-2/index.vue'),
+		},
+		{
+			path: 'level7',
+			name: 'level7',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单7'
 			},
-			{
-				path: 'level8',
-				name: 'level8',
-				meta: {
-					icon: 'md-funnel',
-					title: '菜单8'
-				},
-				component: () => import('@/views/multilevel/level-2/index.vue'),
+			component: () => import('@/views/multilevel/level-2/index.vue'),
+		},
+		{
+			path: 'level8',
+			name: 'level8',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单8'
 			},
-			{
-				path: 'level9',
-				name: 'level9',
-				meta: {
-					icon: 'md-funnel',
-					title: '菜单9'
-				},
-				component: () => import('@/views/multilevel/level-2/index.vue'),
+			component: () => import('@/views/multilevel/level-2/index.vue'),
+		},
+		{
+			path: 'level9',
+			name: 'level9',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单9'
 			},
-			{
-				path: 'level10',
-				name: 'level10',
-				meta: {
-					icon: 'md-funnel',
-					title: '菜单10'
-				},
-				component: () => import('@/views/multilevel/level-2/index.vue'),
+			component: () => import('@/views/multilevel/level-2/index.vue'),
+		},
+		{
+			path: 'level10',
+			name: 'level10',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单10'
 			},
-			{
-				path: 'level11',
-				name: 'level11',
-				meta: {
-					icon: 'md-funnel',
-					title: '菜单11'
-				},
-				component: () => import('@/views/multilevel/level-2/index.vue'),
+			component: () => import('@/views/multilevel/level-2/index.vue'),
+		},
+		{
+			path: 'level11',
+			name: 'level11',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单11'
 			},
-			{
-				path: 'level12',
-				name: 'level12',
-				meta: {
-					icon: 'md-funnel',
-					title: '菜单12'
-				},
-				component: () => import('@/views/multilevel/level-2/index.vue'),
+			component: () => import('@/views/multilevel/level-2/index.vue'),
+		},
+		{
+			path: 'level12',
+			name: 'level12',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单12'
 			},
-			{
-				path: 'level13',
-				name: 'level13',
-				meta: {
-					icon: 'md-funnel',
-					title: '菜单13'
-				},
-				component: () => import('@/views/multilevel/level-2/index.vue'),
-			}
+			component: () => import('@/views/multilevel/level-2/index.vue'),
+		},
+		{
+			path: 'level13',
+			name: 'level13',
+			meta: {
+				icon: 'md-funnel',
+				title: '菜单13'
+			},
+			component: () => import('@/views/multilevel/level-2/index.vue'),
+		}
 		]
-	}
+	},
+	// 默认配置路由地址 404 401 等页面
+	{
+		path: '/:path(.*)*',
+		meta: {
+			hideInMenu: true
+		},
+		component: () => import('@/views/error-page/404/index.vue')
+	},
+	{
+		path: '/403',
+		meta: {
+			hideInMenu: true
+		},
+		component: () => import('@/views/error-page/403/index.vue')
+	},
+	{
+		path: '/500',
+		meta: {
+			hideInMenu: true
+		},
+		component: () => import('@/views/error-page/500/index.vue')
+	},
 ]
 
 export default constantRoutes

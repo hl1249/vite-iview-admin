@@ -110,10 +110,8 @@ const moveToView = (tag) => {
 	if (bodyWidth < outerWidth) {
 		off_set.value = 0
 	} else if (tag.offsetLeft < -off_set.value) {  // 标签在可视区域左侧
-		console.log("标签在可视区域左侧")
 		off_set.value = tag.offsetLeft * -1 + 4
-	} else if (tag.offsetLeft > -off_set.value && tag.offsetLeft + tag.offsetWidth < -off_set.value + outerWidth) { //标签早可视区域
-
+	} else if (tag.offsetLeft > -off_set.value && tag.offsetLeft + tag.offsetWidth < -off_set.value + outerWidth) { //标签早可视区域区域右侧'
 		off_set.value = Math.min(0, outerWidth - tag.offsetLeft - tag.offsetWidth - 4)
 	} else {  					// '标签早可视区域右侧'
 		off_set.value = -(tag.offsetLeft - (outerWidth - 4 - tag.offsetWidth))

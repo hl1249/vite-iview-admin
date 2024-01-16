@@ -5,9 +5,12 @@ import {
 import {
 	getHomeRoute,
 	getBreadCrumbList,
-	getOpenNames
+	getOpenNames,
+	isArrayContainsArray,
+	permissionContrast
 } from '@/util'
 
+// 缓存操作
 import Cache from '@/util/cache'
 
 // 缓存变量键值
@@ -20,20 +23,32 @@ const {
 	BREAD_CRUMB_LIST,
 } = CacheKey
 
+import appConfig from '@/config/app'
+const { HOME_NAME } = appConfig
+
 // 定义的路由地址
 import constantRoutes from '@/router/routers'
 
 // rotuer 实例
 import asyncRoutes from '@/router'
 
+import { userModule } from './user'
+
 export const menuModule = defineStore('menu', {
 	state: () => ({
 		active_name: Cache.get(ACTIVE_NAME) || '', //菜单选中的值
 		open_names: Cache.get(OPEN_NAMES) || [], //需要展开的菜单选项
-		bread_crumb_list: Cache.get(BREAD_CRUMB_LIST)|| [], //面包屑渲染数据
+		bread_crumb_list: Cache.get(BREAD_CRUMB_LIST) || [], //面包屑渲染数据
 		router_history: Cache.get(ROUTER_HISTORY) || [], //路由访问历史记录 
+		permission_routes:Cache.get(PERMISSION_ROUTES) || [] //menu树
 	}),
 	actions: {
+		init(route) {
+			this.setActiveName(route.name)
+			this.setOpenNames(route)
+			this.setBreadCrumb(route)
+			this.addRouterHistory(route)
+		},
 		setActiveName(name) {
 			Cache.set(ACTIVE_NAME, name)
 			this.active_name = name
@@ -45,9 +60,9 @@ export const menuModule = defineStore('menu', {
 		},
 		setBreadCrumb(rotue) {
 			const homeItem = getHomeRoute(constantRoutes)
-			const BreadCrumbList = getBreadCrumbList(rotue,homeItem)
+			const BreadCrumbList = getBreadCrumbList(rotue, homeItem)
 			this.bread_crumb_list = BreadCrumbList
-			Cache.set('BreadCrumbList', BreadCrumbList)
+			Cache.set(BREAD_CRUMB_LIST, BreadCrumbList)
 		},
 		addRouterHistory(newRoute) {
 			const {
@@ -56,8 +71,8 @@ export const menuModule = defineStore('menu', {
 				meta
 			} = newRoute
 			let newList = [...this.router_history]
+			if (!(newList.findIndex(item => item.name === name) >= 0) && (!meta.hideInMenu || name == HOME_NAME)) {
 
-			if (!(newList.findIndex(item => item.name === name) >= 0)) {
 				this.router_history.push({
 					name,
 					path,
@@ -85,7 +100,6 @@ export const menuModule = defineStore('menu', {
 
 			// 移除的最后一项的菜单选项
 			if (active_name == last_router && active_name == name) {
-				console.log("最后一项选中移除")
 				asyncRoutes.push({
 					name: router_history[remove_index - 1].name
 				})
@@ -98,17 +112,17 @@ export const menuModule = defineStore('menu', {
 
 
 		},
-		removeAllHistoryRoute(type){
+		removeAllHistoryRoute(type) {
 			const homeItem = getHomeRoute(constantRoutes)
-			if(type == 'all'){
-				this.router_history.splice(1,this.router_history.length)
+			if (type == 'all') {
+				this.router_history.splice(1, this.router_history.length)
 				asyncRoutes.push({
 					name: homeItem.name
 				})
-				Cache.set(ROUTER_HISTORY,this.router_history)
-				
-			}else{
-				const new_router_history = this.router_history.filter((item)=>{
+				Cache.set(ROUTER_HISTORY, this.router_history)
+
+			} else {
+				const new_router_history = this.router_history.filter((item) => {
 					return item.name == this.active_name || item.name == homeItem.name
 				})
 				asyncRoutes.push({
@@ -116,36 +130,35 @@ export const menuModule = defineStore('menu', {
 				})
 
 				this.router_history = new_router_history
-				
-				Cache.set(ROUTER_HISTORY,this.router_history)
+
+				Cache.set(ROUTER_HISTORY, this.router_history)
 			}
-		}
-	},
-	getters: {
-		// 根据router 生成menu渲染对象
-		permission_routes() {
+		},
+		getPermissionRoutes(){
+			
+			const user_info = userModule().GET_USERINFO()
+			const menu_rotues = JSON.parse(JSON.stringify(constantRoutes))
 
-			const new_rotues = []
-
-			function createMenuRouter(router_array) {
-				router_array.forEach((item, index) => {
-					if (item.meta.hideInMenu != true) {
-						let obj = {
-							icon: (item.meta && item.meta.icon) || '',
-							name: item.name,
-							meta: item.meta,
-							children: item.children
-						}
-
-						new_rotues.push(obj)
+			function filterRoutes(routes) {
+				return routes.filter(route => {
+					
+					if (route.children) {
+						// 递归调用 filterRoutes 处理 children
+						route.children = filterRoutes(route.children);
 					}
-
-				})
+					if( route.meta?.hideInMenu == true){
+						return false
+					}else if(route.meta.roles && permissionContrast(user_info.roles,route.meta.roles) ){
+						return false
+					}else{
+						return true
+					}
+				});
 			}
-			createMenuRouter(constantRoutes)
-			Cache.set(PERMISSION_ROUTES, new_rotues)
 
-			return new_rotues
+			const filteredRoutes = filterRoutes(menu_rotues);
+			this.permission_routes = filteredRoutes
+			Cache.set(PERMISSION_ROUTES, filteredRoutes)
 		}
 	}
 });
